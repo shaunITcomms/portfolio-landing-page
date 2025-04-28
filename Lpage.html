@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Agency</title>
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth; /* Smooth scroll */
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #4f46e5, #6d28d9);
+      color: white;
+      padding: 70px 20px;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+    }
+    header p {
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+    header button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: white;
+      color: #4f46e5;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    header button:hover {
+      background: #ede9fe;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+    section.show {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .service-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      flex: 1 1 250px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input, textarea {
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 100%;
+    }
+    button.submit {
+      background: #4f46e5;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button.submit:hover {
+      background: #6d28d9;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 60px;
+    }
+    @media (max-width: 600px) {
+      .services {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+
+  <script>
+    // Animation when sections come into view
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section");
+
+      const showSection = (section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          section.classList.add('show');
+        }
+      };
+
+      const checkSections = () => {
+        sections.forEach(showSection);
+      };
+
+      window.addEventListener('scroll', checkSections);
+      checkSections();
+    });
+  </script>
+
+</head>
+<body>
+
+<header>
+  <h1>Creative Agency</h1>
+  <p>Building modern websites that inspire</p>
+  <a href="#about"><button>Learn More</button></a>
+</header>
+
+<section id="about">
+  <h2>About Us</h2>
+  <p>We are a creative agency focused on building beautiful, responsive, and functional websites. Our team of designers and developers bring ideas to life with pixel-perfect design and seamless user experiences.</p>
+</section>
+
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="services">
+    <div class="service-card">
+      <h3>Web Design</h3>
+      <p>Modern, creative, and functional website design tailored to your brand.</p>
+    </div>
+    <div class="service-card">
+      <h3>Development</h3>
+      <p>Custom HTML/CSS/WordPress development with a focus on performance and SEO.</p>
+    </div>
+    <div class="service-card">
+      <h3>Brand Strategy</h3>
+      <p>Helping businesses define their digital presence and connect with their audience.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit" class="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2025 Creative Agency. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
