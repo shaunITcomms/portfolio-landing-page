@@ -2,224 +2,157 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="Shaun Programming - Web Developer Portfolio">
-  <meta property="og:description" content="Welcome to my personal portfolio showcasing web development projects in PHP, Python, SQL, and modern web design.">
-  <meta property="og:url" content="https://shaunitcomms.github.io/portfolio-landing-page/">
-  <meta property="og:type" content="website">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shaun Programming | Web Developer Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome for icons -->
+  <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script> <!-- Replace with your own kit code if needed -->
+
+  <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <title>Shaun Programming</title>
-  
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    html {
-      scroll-behavior: smooth; /* Smooth scroll */
-    }
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f9f9f9;
-      color: #333;
+      font-family: 'Orbitron', sans-serif;
+      background: #0D0D0D;
+      color: #FFFFFF;
+      scroll-behavior: smooth;
     }
+
     header {
-      background: linear-gradient(135deg, #4f46e5, #6d28d9);
-      color: white;
-      padding: 70px 20px;
       text-align: center;
-      animation: fadeIn 2s ease;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 100%);
     }
+
     header h1 {
-      margin: 0;
       font-size: 3em;
+      color: #00FFFF;
+      text-shadow: 0 0 10px #00FFFF;
     }
+
     header p {
       margin-top: 10px;
       font-size: 1.2em;
+      color: #BB86FC;
+      text-shadow: 0 0 5px #BB86FC;
     }
-    header button {
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: white;
-      color: #4f46e5;
+
+    .btn-primary {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 30px;
+      font-weight: bold;
+      background: #00FFFF;
+      color: #0D0D0D;
       border: none;
       border-radius: 30px;
-      font-weight: bold;
-      cursor: pointer;
+      font-size: 1em;
+      text-decoration: none;
       transition: all 0.3s ease;
     }
-    header button:hover {
-      background: #ede9fe;
+
+    .btn-primary:hover {
+      background: #00FF7F;
+      color: #000;
+      box-shadow: 0 0 20px #00FF7F;
     }
+
     section {
-      padding: 60px 20px;
+      padding: 80px 20px;
       max-width: 1000px;
       margin: auto;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 1s ease;
-    }
-    section.show {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .service-card {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      flex: 1 1 250px;
       text-align: center;
-      transition: transform 0.3s ease;
     }
-    .service-card:hover {
-      transform: translateY(-10px);
+
+    .skills-bar {
+      background: #1A1A1A;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      text-align: left;
+      box-shadow: 0 0 10px #00FFFF;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+
+    .skills-bar span {
+      display: block;
+      height: 25px;
+      background: #00FFFF;
+      width: 0;
+      animation: grow 2s ease forwards;
     }
-    input, textarea {
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      width: 100%;
+
+    @keyframes grow {
+      to { width: var(--width); }
     }
-    button.submit {
-      background: #4f46e5;
-      color: white;
-      border: none;
-      padding: 15px;
-      border-radius: 30px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    button.submit:hover {
-      background: #6d28d9;
-    }
+
     footer {
-      background: #333;
-      color: white;
+      padding: 20px;
       text-align: center;
-      padding: 25px;
-      margin-top: 60px;
+      font-size: 0.9em;
+      color: #aaa;
+      border-top: 1px solid #333;
     }
-    @media (max-width: 600px) {
-      .services {
-        flex-direction: column;
-        align-items: center;
-      }
+
+    a {
+      color: #00FFFF;
+      text-decoration: none;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px);}
-      to { opacity: 1; transform: translateY(0);}
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 
-  <script>
-    // Animation when sections come into view
-    document.addEventListener("DOMContentLoaded", () => {
-      const sections = document.querySelectorAll("section");
-
-      const showSection = (section) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          section.classList.add('show');
-        }
-      };
-
-      const checkSections = () => {
-        sections.forEach(showSection);
-      };
-
-      window.addEventListener('scroll', checkSections);
-      checkSections();
-    });
-  </script>
-
 </head>
 <body>
-  <!-- Background Music -->
-  <audio id="background-music" loop>
-    <source src="WAIIAN - SMILE (feat. Yorko & U-Pistol) [Official Music Video].mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
 
-  <!-- Play/Pause Button -->
-  <button id="music-control" style="position: fixed; top: 20px; right: 20px; padding: 10px 20px; background: #4F46E5; color: white; border: none; border-radius: 8px; cursor: pointer;">
-    Play Music
-  </button>
-
-  <script>
-    const music = document.getElementById('background-music');
-    const controlBtn = document.getElementById('music-control');
-
-    controlBtn.addEventListener('click', () => {
-      if (music.paused) {
-        music.play();
-        controlBtn.textContent = 'Pause Music';
-      } else {
-        music.pause();
-        controlBtn.textContent = 'Play Music';
-      }
-    });
-  </script>
-  
 <header>
-  <h1>Shaun IT commer</h1>
-  <p>Creative Web Developer | PHP & Python Enthusiast | Building Seamless Digital Experiences</p>
-  <a href="#about"><button>Learn More</button></a>
+  <h1>Shaun Programming</h1>
+  <p>Creative Web Developer | PHP & Python Specialist</p>
+  <a href="/resume.pdf" class="btn-primary" download>Download Resume</a>
 </header>
-
 
 <section id="about">
   <h2>About Me</h2>
-  <p>Hello! I'm a passionate IT graduate with a strong background in web development and programming. I specialize in creating dynamic, user-friendly websites and web applications. My technical skills include expertise in HTML, CSS, PHP system development, XAMPP environments, SQL database management, and Python programming.</p>
-
-  <p>Throughout my journey, I have worked on developing custom web systems, integrating databases efficiently, and building responsive front-end designs. I am deeply committed to writing clean, efficient code and continuously enhancing user experience. With a focus on both front-end and back-end technologies, I strive to deliver complete, high-quality digital solutions.</p>
-
-  <p>I am eager to contribute my skills, creativity, and passion for development to innovative projects and growing teams. Let's build something amazing together!</p>
+  <p>Hello! I'm an IT graduate specializing in web development and system programming. With a background in PHP system development, XAMPP, SQL databases, and Python programming, I create responsive, dynamic, and secure web solutions.</p>
 </section>
 
-<section id="services">
-  <h2>My Services</h2>
-  <div class="services">
-    <div class="service-card">
-      <h3>Web Design</h3>
-      <p>Modern, creative, and functional website design tailored to your brand.</p>
-    </div>
-    <div class="service-card">
-      <h3>Development</h3>
-      <p>Custom HTML/CSS/WordPress development with a focus on performance and SEO.</p>
-    </div>
-    <div class="service-card">
-      <h3>Brand Strategy</h3>
-      <p>Helping businesses define their digital presence and connect with their audience.</p>
-    </div>
+<section id="skills">
+  <h2>My Skills</h2>
+
+  <div class="skills-bar" style="--width: 90%;">
+    <span></span>
   </div>
+  <p>HTML & CSS</p>
+
+  <div class="skills-bar" style="--width: 80%;">
+    <span></span>
+  </div>
+  <p>PHP System Development</p>
+
+  <div class="skills-bar" style="--width: 75%;">
+    <span></span>
+  </div>
+  <p>SQL Database Management</p>
+
+  <div class="skills-bar" style="--width: 70%;">
+    <span></span>
+  </div>
+  <p>Python Programming</p>
 </section>
 
 <section id="contact">
-  <h2>Contact Us</h2>
-  <form>
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit" class="submit">Send Message</button>
-  </form>
+  <h2>Contact Me</h2>
+  <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
 </section>
 
 <footer>
-  <p>© 2025 Creative Agency. All rights reserved.</p>
+  <p>© 2025 Shaun Programming. All Rights Reserved.</p>
 </footer>
 
 </body>
