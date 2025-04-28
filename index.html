@@ -143,11 +143,31 @@
 
 </head>
 <body>
-
-  <audio autoplay loop hidden>
-    <source src="WAIIAN - SMILE (feat. Yorko & U-Pistol) [Official Music Video].mp3" type="audio/mpeg">
+  <!-- Background Music -->
+  <audio id="background-music" loop>
+    <source src="your-music-file.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+
+  <!-- Play/Pause Button -->
+  <button id="music-control" style="position: fixed; top: 20px; right: 20px; padding: 10px 20px; background: #4F46E5; color: white; border: none; border-radius: 8px; cursor: pointer;">
+    Play Music
+  </button>
+
+  <script>
+    const music = document.getElementById('background-music');
+    const controlBtn = document.getElementById('music-control');
+
+    controlBtn.addEventListener('click', () => {
+      if (music.paused) {
+        music.play();
+        controlBtn.textContent = 'Pause Music';
+      } else {
+        music.pause();
+        controlBtn.textContent = 'Play Music';
+      }
+    });
+  </script>
   
 <header>
   <h1>Creative Agency</h1>
